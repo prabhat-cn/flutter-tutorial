@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   // const NewTransaction({Key? key}) : super(key: key);
   // function coming from props user_transaction
   final Function addTrax;
+
+  const NewTransaction(this.addTrax);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
+
   final amountController = TextEditingController();
-// Constructor
-  NewTransaction(this.addTrax);
+
 // submit function
-  // void submitData(String val) {
-  //   addTrax(
-  //     titleController.text,
-  //     double.parse(amountController.text),
-  //   );
-  // }
   void submitData() {
     final enteredTitle = titleController.text;
     // amount is not string is double
@@ -22,7 +24,7 @@ class NewTransaction extends StatelessWidget {
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-    addTrax(
+    widget.addTrax(
       enteredTitle,
       enteredAmount,
     );
