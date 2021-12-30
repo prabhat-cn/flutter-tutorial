@@ -10,7 +10,19 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Expence App', home: MyHomePage());
+    return MaterialApp(
+        title: 'Expence App',
+        // color define globaly
+        // theme: ThemeData(
+        //   primarySwatch: Colors.green,
+        //   // floating action button
+        //   accentColor: Colors.amber,
+        // ),
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+              .copyWith(secondary: Colors.amber),
+        ),
+        home: MyHomePage());
   }
 }
 
@@ -61,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // backgroundColor: Colors.red,
         title: const Text('Expence App'),
         actions: <Widget>[
           IconButton(
