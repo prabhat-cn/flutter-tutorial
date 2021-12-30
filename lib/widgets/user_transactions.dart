@@ -42,7 +42,7 @@ class _UserTransactionsState extends State<UserTransactions> {
     return Column(
       children: <Widget>[
         // Add "NewTransaction" Widget called
-        NewTransaction(),
+        NewTransaction(_addNewTransaction),
 
         // Add "TransactionList" Widget called
         TransactionList(_userTransactions),
