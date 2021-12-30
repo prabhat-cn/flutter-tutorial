@@ -17,8 +17,29 @@ class MyApp extends StatelessWidget {
         //   primarySwatch: Colors.green,
         //   // floating action button
         //   accentColor: Colors.amber,
+        //   fontFamily: 'Schyler',
         // ),
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+              toolbarTextStyle: ThemeData.light()
+                  .textTheme
+                  .copyWith(
+                      subtitle2: const TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ))
+                  .bodyText2,
+              titleTextStyle: ThemeData.light()
+                  .textTheme
+                  .copyWith(
+                      subtitle2: const TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ))
+                  .headline6),
+          fontFamily: 'Schyler',
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
               .copyWith(secondary: Colors.amber),
         ),
@@ -74,7 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.red,
-        title: const Text('Expence App'),
+        title: const Text(
+          'Expence App',
+          style: TextStyle(fontFamily: 'RobotoMono'),
+        ),
         actions: <Widget>[
           IconButton(
             onPressed: () => _startAddNewTransaction(context),
