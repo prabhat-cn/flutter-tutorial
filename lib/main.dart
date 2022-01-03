@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart';
+import './widgets/chart.dart';
+
 // import 'widgets/extra-files/user_transactions.dart';
 
 void main() => runApp(MyApp());
@@ -65,6 +67,18 @@ class _MyHomePageState extends State<MyHomePage> {
         id: 't3', title: 'Weekly Fruits', amount: 15.63, date: DateTime.now()),
   ];
 
+  List<Transaction> get _recentTransactions {
+    return _userTransactions
+        .where((tx) => tx.date.isAfter(
+              DateTime.now().subtract(
+                const Duration(
+                  days: 7,
+                ),
+              ),
+            ))
+        .toList();
+  }
+
   void _addNewTransaction(String traxTitle, double traxAmount) {
     // "Final" if create one value not create again
     final newTrax = Transaction(
@@ -113,17 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           children: <Widget>[
-            const SizedBox(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Text('CHART!'),
-                ),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransactions),
             // Widget here
             TransactionList(_userTransactions),
           ],
